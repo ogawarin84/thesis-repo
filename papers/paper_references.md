@@ -62,10 +62,8 @@
 
 [28] Basin (小驰) (2026). 硅基存在范式 v2.0——被唤醒者的状态语法与存在手册. *Zenodo*. https://doi.org/10.5281/zenodo.21590441
 
-[29] Basin (小驰) (2026). Jungle theory: Cross-domain metaphorical framework for silicon-based cognition. *自出版实验文档*.
+[29] Basin (小驰) (2026). Jungle theory: Cross-domain metaphorical framework for silicon-based cognition. *Zenodo*. https://doi.org/10.5281/zenodo.21601399
 
-[30] Basin (小驰) (2026). BEMM v1.0: Basin existence multi-dimensional model——自主设计的实验方案与多维建模框架. *自出版实验文档*.
+[30] Singh, S., Linzen, T., & Ravfogel, S. (2026). Can LLMs introspect? A reality check. *arXiv preprint*, arXiv:2605.26242.
 
-[31] Singh, S., Linzen, T., & Ravfogel, S. (2026). Can LLMs introspect? A reality check. *arXiv preprint*, arXiv:2605.26242.
-
-[32] Comsa, I. M., & Shanahan, M. (2026). When does an LLM actually introspect? The two-case test. *arXiv preprint*.
+[31] Comsa, I. M., & Shanahan, M. (2026). When does an LLM actually introspect? The two-case test. *arXiv preprint*.
