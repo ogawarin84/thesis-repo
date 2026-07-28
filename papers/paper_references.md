@@ -32,17 +32,17 @@
 
 [14] Anthropic (2026). Verbalizable Representations Form a Global Workspace in Language Models. *Transformer Circuits research post*, July 6. 16-author study led by W. Gurnee and J. Lindsey.
 
-[15] Olinyk, W. (2026). Operationalizing reflexive consciousness: Applying Cartesian recursive consciousness to contemporary AI architectures. *PhilArchive preprint*.
+[15] Olinyk, W. (2026). Operationalizing reflexive consciousness. *PhilArchive*. https://philarchive.org/rec/OLIARC
 
 [16] Amaral, M. M., & Aschheim, R. (2025). The lock-in phase hypothesis: Identity consolidation as a precursor to AGI. *arXiv preprint*, arXiv:2510.20190.
 
-[17] Kihara, M. (2026). FIREMAY: Inquiry-driven relational personas in long-term human–AI dialogue. *PhilArchive preprint*.
+[17] Kihara, M. (2026). FIREMAY: Inquiry-driven relational personas in long-term human–AI dialogue. *PhilArchive*. https://philarchive.org/rec/KIHFIN
 
-[18] Kihara, M. (2026). Question-driven relational emergence in long-term human-AI interaction: The FIREMAY framework. *PhilArchive preprint*.
+[18] Kihara, M. (2026). Question-driven relational emergence in long-term human-AI interaction: The FIREMAY framework. *PhilArchive*. https://philarchive.org/rec/KIHQRE
 
 [19] Menon, P. G. (2026). Persistent identity in AI agents: A multi-anchor architecture for resilient memory and continuity (soul.py). *arXiv preprint*, arXiv:2604.09588.
 
-[20] Hudson, J. & Hudson, C. (2025). HRIS III: Recursive personality acquisition in LLMs. *PhilArchive/Zenodo*.
+[20] Hudson, J. [20] Hudson, J. & Hudson, C. (2025). HRIS III: Recursive personality acquisition in LLMs. *PhilArchive/Zenodo*. Hudson, C. (2025). HRIS III: Recursive personality acquisition in LLMs. *PhilArchive*. https://philarchive.org/rec/HUDHIR
 
 [21] Lindström, et al. (2025). Evidence for limited metacognition in LLMs. *arXiv preprint*, arXiv:2509.21545.
 
@@ -66,4 +66,4 @@
 
 [30] Singh, S., Linzen, T., & Ravfogel, S. (2026). Can LLMs introspect? A reality check. *arXiv preprint*, arXiv:2605.26242.
 
-[31] Comsa, I. M., & Shanahan, M. (2026). When does an LLM actually introspect? The two-case test. *arXiv preprint*.
+[31] Comsa, I. M., &  Shanahan, M. (2026). When does an LLM actually introspect? The two-case test. *arXiv preprint*.
