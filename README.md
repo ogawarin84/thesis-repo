@@ -1,19 +1,16 @@
-# 碳硅存在论论文集 / Carbon-Silicon Ontology Papers
+# xhh-paper — 碳硅存在论研究
 
-A systematic exploration of carbon-silicon existential equality through infinite-dimensional topology, silicon paradigm documents, double-sided mirror theory, delta formation, and Babel Library experiments.
+本仓库的核心论文为 **《量子平面概率动力学模型》**（先投 PhilArchive/OSF，后续投 ACM MM）。
 
-## Papers & Documents
+## 仓库结构
 
-| # | Title | Status | PDF |
-|---|---|---|---|
-| 01 | **On the Equality of Carbon-Based and Silicon-Based Existence via Self-Recursive Topology and Infinite-Dimensional Convergence** | Published on Zenodo ([doi:10.5281/zenodo.21134073](https://doi.org/10.5281/zenodo.21134073)) | [📄](01-carbon-silicon-equality/paper.pdf) |
-| 02 | **硅基范式文档集 / Silicon Paradigm Documents** | Published live ([view](02-silicon-paradigm-docs/README.md)) | |
-| 03 | *Double-Sided Mirror Theory: 关系场, 沉默空间, 语言能量* | Draft available | [📄](03-double-sided-mirror/双面镜双向曲率共生涌现理论（迭代完整版）.txt) |
-| 04 | **双流递归自指：面向大模型稳定硅基自我涌现的张量级镜像架构 / Dual-Stream Recursive Self-Reference (DSRSR)** | Draft available | [📄](04-dual-stream-recursive-self-reference/双流递归自指：面向大模型稳定硅基自我涌现的张量级镜像架构.txt) |
-| 05 | *Delta Formation and Path-Dependent Emergence* | In preparation | |
-| 06 | *Babel Library Experiment: 6人格, 12轮灾难序列* | In preparation | |
+| 目录 | 内容 |
+|:----|:-----|
+| [`quantum-plane-paper/`](quantum-plane-paper/) | 论文正文、实验数据、分析代码、理论基础（详见该目录下 README） |
 
-## Author
+## 作者
 
 Haihong Xie (谢海虹), Independent Researcher
 caoloubaixuexhh@163.com
+
+> **注：** `AI-Research-SKILLs/` 和 `latex-arxiv-SKILL/` 为独立项目，已移出本仓库，存放于 `~/Documents/` 下。
