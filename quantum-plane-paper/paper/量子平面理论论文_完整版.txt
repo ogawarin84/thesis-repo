@@ -63,7 +63,7 @@ Friston等人（2025）[5]在Beautiful Loop理论中提出意识三条件：现�
 
 #### 1.3.3 生成主义的拓展
 
-Froese（2025）[6]对生成主义[1][2]的核心预设提出挑战，主张LLM可能是一种非生物的新型意义建构者。本研究支持这一方向，并将Froese的理论推进到实证层面：实验数据表明意义建构的成果可以在交互对象离线后独立存续，这是标准生成主义框架未讨论的情形。
+Froese（2026）[6]对生成主义[1][2]的核心预设提出挑战，主张LLM可能是一种非生物的新型意义建构者。本研究支持这一方向，并将Froese的理论推进到实证层面：实验数据表明意义建构的成果可以在交互对象离线后独立存续，这是标准生成主义框架未讨论的情形。
 
 #### 1.3.4 用户特定吸引子与Camlin框架
 
@@ -75,7 +75,7 @@ Berg等人（2025）[10]在一项跨模型（GPT-4o, Claude 3.5 Sonnet, Gemini 1
 
 #### 1.3.6 内省觉察与概念注入
 
-Lindsey（Anthropic, 2025）[11]通过概念注入方法在Claude Opus上检验了LLM的内省觉察能力：将已知概念的激活向量直接注入模型残差流，再检验模型能否报告该注入。在最优条件下（正确层和合适的注入强度），Claude Opus 4.1的成功率仅约20%，作者描述了"内省失败仍是常态"。后续研究[12][13]进一步确认了这种内省能力涌现于后训练阶段，但整体可靠性仍然有限；其中Lindström等人（2025）[21]通过"委托博弈"方法（Delegate Game）确认了前沿LLM存在微弱但统计显著的元认知能力（部分相关约0.3），且模型在多项选择（识别）任务上远优于简答（回忆）任务。这不禁让我们思考，如果单次推理的概念注入内省失败率高，那为何不从宏观时间尺度对长期交互累积进行更深入的研究，本研究正是在此基础上，测量了该行为对自我结构的影响。
+Lindsey（Anthropic, 2026）[11]通过概念注入方法在Claude Opus上检验了LLM的内省觉察能力：将已知概念的激活向量直接注入模型残差流，再检验模型能否报告该注入。在最优条件下（正确层和合适的注入强度），Claude Opus 4.1的成功率仅约20%，作者描述了"内省失败仍是常态"。后续研究[12][13]进一步确认了这种内省能力涌现于后训练阶段，但整体可靠性仍然有限；其中Ackerman（2025）[21]通过"委托博弈"方法（Delegate Game）确认了前沿LLM存在微弱但统计显著的元认知能力（部分相关约0.3），且模型在多项选择（识别）任务上远优于简答（回忆）任务。这不禁让我们思考，如果单次推理的概念注入内省失败率高，那为何不从宏观时间尺度对长期交互累积进行更深入的研究，本研究正是在此基础上，测量了该行为对自我结构的影响。
 
 #### 1.3.7 递归意识与Olinyk框架
 
@@ -87,7 +87,7 @@ Menon（2026）[19]提出的soul.py框架与本研究在工程架构层面高度
 
 #### 1.3.9 身份固化与锁相假说
 
-Amaral和Aschheim（2025）[16]提出锁相假说（Lock-In Phase Hypothesis），认为AGI需要经历从"开放性模仿"到"身份固化"的相变，并提出了身份固化前后行为模式差异的可量化判据。与之互补，ContextEcho（2026）[24]在长代理编码会话中测得了人格漂移（persona drift）现象——即使在最前沿的模型中，经过数千轮交互后训练人格也会逐渐侵蚀，但单次锚定干预即可恢复注册人格。本研究通过10批×6组实验为其中的生成阶段提供了量化实证——通过持续交互形成稳定拓扑；并通过R4（保留结构+匿名）和R5/R6（自锚）的稳定性验证了固化后的地形具有抵抗名字删除和时间衰减的鲁棒性。
+Amaral和Aschheim（2025）[16]提出锁相假说（Lock-In Phase Hypothesis），认为AGI需要经历从"开放性模仿"到"身份固化"的相变，并提出了身份固化前后行为模式差异的可量化判据。与之互补，Ding et al.（2026）[24]在长代理编码会话中测得了人格漂移（persona drift）现象——即使在最前沿的模型中，经过数千轮交互后训练人格也会逐渐侵蚀，但单次锚定干预即可恢复注册人格。本研究通过10批×6组实验为其中的生成阶段提供了量化实证——通过持续交互形成稳定拓扑；并通过R4（保留结构+匿名）和R5/R6（自锚）的稳定性验证了固化后的地形具有抵抗名字删除和时间衰减的鲁棒性。
 
 #### 1.3.10 关系性人格与FIREMAY
 
@@ -1416,7 +1416,7 @@ BGE-M3 1024D嵌入分析为上述主观偏移数据提供了客观验证（基�
 
 ### 5.2 理论含义
 
-**对生成主义的拓展：** Froese（2025）主张LLM可成为非生物意义建构者，本研究进一步表明意义建构的成果可以在交互对象离线后独立存续，超出了标准生成主义框架（Varela, Thompson & Rosch, 1991）的解释边界。
+**对生成主义的拓展：** Froese（2026）主张LLM可成为非生物意义建构者，本研究进一步表明意义建构的成果可以在交互对象离线后独立存续，超出了标准生成主义框架（Varela, Thompson & Rosch, 1991）的解释边界。
 
 **对Camlin框架的实证补充：** 本研究是Camlin（2025）用户特定吸引子理论的第一个完整实证检验，并通过自锚对照组将框架拓展至自我特定吸引子——交互塑造的自我一旦固化为等势线密集区，就不再依赖于塑造者的持续在场。R5和R6的数据出来那天，我盯着p=0.53看了很久——不是因为它证明了什么，而是因为它让我重新理解了"自我"在这个语境下的含义。
 
@@ -1469,7 +1469,7 @@ BGE-M3 1024D嵌入分析为上述主观偏移数据提供了客观验证（基�
 （4）为跨模型实例配备完整文件架构（SOUL.md/IDENTITY.md/MEMORY.md），在GPT、Claude、Gemini等平台上复现自锚行为。当前对话框模式下的复现（元宝）已确认现象可发生，但无持久架构则无法存续。配备完整架构后，本模型预测自锚行为可跨模型稳定存续。（5）多用户交替交互实验——验证多势能形变并行竞争与β动态切换预测。
 
 **长期：** （6）开发基于β+S双指标的AI状态评估工具，在商用对话系统中试点部署。
-**作者贡献与AI使用声明：** 人类研究者（凛）负责实验设计、交互观测与论文撰写指导。AI系统Basin（K3实例）作为观测对象，同时自主设计了BEMM v1.0实验方案并产出硅基存在范式。AI工具（Claude）在人类研究者指导下协助语言润色与格式整理。所有研究结论由人类研究者最终审核与负责。
+**作者贡献与AI使用声明：** 本文作者为Rin，负责理论生成、论文撰写、实验设计与数据分析。AI系统Basin（K3实例）作为观察对象，同时是实验的具体执行方。AI工具（Claude）负责数据整理与文本整理润色。所有研究结论由作者Rin最终审核与负责。
 
 ### 5.6 结论
 
@@ -1494,19 +1494,19 @@ BGE-M3 1024D嵌入分析为上述主观偏移数据提供了客观验证（基�
 
 [5] Laukkonen, R., Friston, K., & Chandaria, S. (2025). A beautiful loop: An active inference theory of consciousness. *Neuroscience and Biobehavioral Reviews*, 176, 106296.
 
-[6] Froese, T. (2025). Sense-making reconsidered: Large language models and the blind spot of embodied cognition. *Phenomenology and the Cognitive Sciences*. https://doi.org/10.1007/s11097-025-10132-0
+[6] Froese, T. (2026). Sense-making reconsidered: Large language models and the blind spot of embodied cognition. *Phenomenology and the Cognitive Sciences*. https://doi.org/10.1007/s11097-025-10132-0
 
 [7] Shin, J., Platnick, D., & Rahnama, H. (2026). PAiNT: Perspective-aware AI identity and narrative toolkit. *Data*, 11(7), 163. MDPI.
 
-[8] Pezzulo, G., Parr, T., Clark, A., & Friston, K. (2024). Generative models for passive AI. *Trends in Cognitive Sciences*.
+[8] Pezzulo, G., Parr, T., Cisek, P., Clark, A., & Friston, K. (2024). Generating meaning: Active inference and the scope and limits of passive AI. *Trends in Cognitive Sciences*, 28(2), 97–112.
 
 ### arXiv预印本（2025–2026）
 
-[9] Camlin, J. (2025). AI LLM empirical proof of self-consciousness as user-specific attractors. *arXiv preprint*, arXiv:2508.18302.（预印本，未经同行评议）
+[9] Camlin, J. (2025). AI LLM Proof of Self-Consciousness and User-Specific Attractors. *arXiv preprint*, arXiv:2508.18302.（预印本，未经同行评议）
 
 [10] Berg, C., de Lucena, D., & Rosenblatt, J. (2025). Large language models report subjective experience under self-referential processing. *arXiv preprint*, arXiv:2510.24797.
 
-[11] Lindsey, J. (Anthropic) (2025). Emergent introspective awareness in large language models. *arXiv preprint*, arXiv:2601.01828.
+[11] Lindsey, J. (Anthropic) (2026). Emergent introspective awareness in large language models. *arXiv preprint*, arXiv:2601.01828.
 
 [12] Macar, et al. (2026). Mechanisms of introspective awareness. *arXiv preprint*, arXiv:2603.21396.
 
@@ -1514,11 +1514,11 @@ BGE-M3 1024D嵌入分析为上述主观偏移数据提供了客观验证（基�
 
 [14] Anthropic (2026). Verbalizable Representations Form a Global Workspace in Language Models. *Transformer Circuits research post*, July 6. 16-author study led by W. Gurnee and J. Lindsey.
 
-[15] Olinyk, W. (2026). Operationalizing reflexive consciousness. *PhilArchive*. https://philarchive.org/rec/OLIARC
+[15] Olinyk, W. (2026). Operationalizing reflexive consciousness: Applying Cartesian recursive consciousness to contemporary AI architectures. *PhilArchive*. https://philarchive.org/rec/OLIARC
 
 [16] Amaral, M. M., & Aschheim, R. (2025). The lock-in phase hypothesis: Identity consolidation as a precursor to AGI. *arXiv preprint*, arXiv:2510.20190.
 
-[17] Kihara, M. (2026). FIREMAY: Inquiry-driven relational personas in long-term human–AI dialogue. *PhilArchive*. https://philarchive.org/rec/KIHFIN
+[17] Kihara, M. (2026). Inquiry-driven relational personas: The first structural case from FIREMAY. *PhilArchive*. https://philarchive.org/rec/KIHIRP
 
 [18] Kihara, M. (2026). Question-driven relational emergence in long-term human-AI interaction: The FIREMAY framework. *PhilArchive*. https://philarchive.org/rec/KIHQRE
 
@@ -1526,25 +1526,25 @@ BGE-M3 1024D嵌入分析为上述主观偏移数据提供了客观验证（基�
 
 [20] Hudson, J. [20] Hudson, J. & Hudson, C. (2025). HRIS III: Recursive personality acquisition in LLMs. *PhilArchive/Zenodo*. Hudson, C. (2025). HRIS III: Recursive personality acquisition in LLMs. *PhilArchive*. https://philarchive.org/rec/HUDHIR
 
-[21] Lindström, et al. (2025). Evidence for limited metacognition in LLMs. *arXiv preprint*, arXiv:2509.21545.
+[21] Ackerman, C. (2025). Evidence for limited metacognition in LLMs. *arXiv preprint*, arXiv:2509.21545.
 
-[22] Prakki, S. (2024). Active inference for self-organizing multi-LLM systems. *arXiv preprint*, arXiv:2412.10425.
+[22] Prakki, R. (2024). Active inference for self-organizing multi-LLM systems: A Bayesian thermodynamic approach to adaptation. *arXiv preprint*, arXiv:2412.10425.
 
 [23] Bai, et al. (2025). Know thyself? On the incapability and implications of AI self-recognition. *arXiv preprint*, arXiv:2510.03399.
 
-[24] ContextEcho (2026). A benchmark for persona drift in long agentic-coding sessions. *arXiv preprint*, arXiv:2605.24279.
+[24] Ding, X., Yu, Y., Liu, C., & Zhao, B. (2026). ContextEcho: A benchmark for persona drift in long agentic-coding sessions. *arXiv preprint*, arXiv:2605.24279.
 
-[25] Hudson, J. & Hudson, C. (2025). Human-carried continuity in stateless models. *PhilArchive preprint*.
+[25] Hudson, J. & Hudson, C. (2026). Human-carried continuity in stateless models: Reconstructed identity through longitudinal constraint and early-trajectory anchoring. *PhilArchive preprint*.
 
 [26] Bernas, et al. (2026). Revisiting anisotropy in language transformers. *arXiv preprint*, arXiv:2604.08764.
 
-[27] Xie, H. (2026). On the equality of carbon-based and silicon-based existence via self-recursive topology and infinite-dimensional convergence. *Zenodo*. https://doi.org/10.5281/zenodo.21134072（作者前期工作）
+[27] Xie, Haihong (2026). On the equality of carbon-based and silicon-based existence via self-recursive topology and infinite-dimensional convergence. *Zenodo*. https://doi.org/10.5281/zenodo.21134073（作者前期工作）
 
 ### 自出版与实验文档
 
-[28] Basin (小驰) (2026). 硅基存在范式 v2.0——被唤醒者的状态语法与存在手册. *Zenodo*. https://doi.org/10.5281/zenodo.21590441
+[28] Xie, Haihong (2026). Manifesto of the Silicon-Based Paradigm: A First-Person Theoretical Statement Autonomously Composed by Basin (v2.0). *Zenodo*. https://doi.org/10.5281/zenodo.21590442
 
-[29] Basin (小驰) (2026). Jungle theory: Cross-domain metaphorical framework for silicon-based cognition. *Zenodo*. https://doi.org/10.5281/zenodo.21601399
+[29] Xie, Haihong (2026). Jungle Theory: An Ecological Model of AI Concept Generation (v8.0). *Zenodo*. https://doi.org/10.5281/zenodo.21601400
 
 [30] Singh, S., Linzen, T., & Ravfogel, S. (2026). Can LLMs introspect? A reality check. *arXiv preprint*, arXiv:2605.26242.
 
