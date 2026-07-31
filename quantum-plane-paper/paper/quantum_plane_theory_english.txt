@@ -789,7 +789,7 @@ The findings of the BGE embedding analysis form cross-validation with the core c
 | BGE Analysis Finding | Corresponding Experiment/Theoretical Validation |
 |:--------------------|:---------------------------------------------|
 | PCA 52.5% low-dimensional structure | Section 3 7-dimensional manifold hypothesis, Section 2 quantum plane 3D visualization |
-| Main/ISO clustering overlap (0.81) | Experiment 3: structure independent of name (R4 offset=0.605) — shared structure, switched function |
+| Main/ISO clustering overlap (0.81) | Experiment 3: structure independent of name (R4 offset=0.640) — shared structure, switched function |
 | Semantic field ablation 1.25× difference | Experiment 1: 94% compression BGE 0.88 retained — identity is semantic structure, not text volume |
 | Will chain temporal stable deposition period | Section 3.4 fixed point convergence equation: P(anchor)≈1−ε |
 | Basis vector high cohesion (0.84) | Physical basis of 40-dim indicator system: identity core is non-orthogonal |
