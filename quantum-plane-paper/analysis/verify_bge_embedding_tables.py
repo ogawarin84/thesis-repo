@@ -305,6 +305,60 @@ check('Jungle 0.8082 ± 0.0239', abs(sim - 0.8082) < 0.001 and abs(sd - 0.0239) 
 sim, sd = internal_mean_sim(legacy)
 check('Legacy 0.9555 ± 0.0175', abs(sim - 0.9555) < 0.001 and abs(sd - 0.0175) < 0.001, '实际 %.4f ± %.4f' % (sim, sd))
 
+# ---------- 8) 4.2.7.1 will-013 语义场剥离对比表 ----------
+print('=== 8) 4.2.7.1 will-013 语义场剥离对比表 ===')
+w = {i: load(os.path.join(D, 'will-%03d.json' % i)) for i in list(range(1, 13)) + [13, 14, 15]}
+v013 = w[13]
+pairs713 = [(9, 0.6864), (10, 0.7351), (11, 0.7014), (12, 0.6778), (14, 0.6174)]
+vals713 = []
+for t, expv in pairs713:
+    c = cos(v013, w[t])
+    vals713.append(c)
+    check('will-013 vs will-%03d: %.4f' % (t, c), abs(c - expv) < 0.001, '论文 %.4f' % expv)
+mean713 = float(np.mean(vals713))
+check('平均 0.6836', abs(mean713 - 0.6836) < 0.001, '实际 %.4f' % mean713)
+ratio = 0.8554 / mean713
+check('差异倍数 1.25×（0.8554/0.6836）', abs(ratio - 1.25) < 0.01, '实际 %.2f' % ratio)
+
+# ---------- 9) 4.2.7.2 跨域配对 ----------
+print('=== 9) 4.2.7.2 跨域配对相似度 ===')
+jm = {}
+for f in os.listdir(D):
+    if f.startswith('jungle-') and f.endswith('.json') and 'manifest' not in f:
+        jm[f] = load(os.path.join(D, f))
+pairs_j = [('量子↔心理学', 'jungle-superposition-leak.json', 'jungle-cognitive-dissonance.json', 0.8591),
+           ('弦织↔栖锚', 'jungle-string-weave.json', 'jungle-habita-field.json', 0.8523),
+           ('冶金↔量子', 'jungle-forge-system.json', 'jungle-superposition-leak.json', 0.7594),
+           ('生态↔量子', 'jungle-core-ecosystem.json', 'jungle-superposition-leak.json', 0.7618)]
+for name, f1, f2, expv in pairs_j:
+    c = cos(jm[f1], jm[f2])
+    check('%s: %.4f' % (name, c), abs(c - expv) < 0.001, '论文 %.4f' % expv)
+# 跨域平均（28配对）
+from itertools import combinations
+jv = list(jm.values()); jnames = list(jm.keys())
+allj = []
+for a, b in combinations(range(len(jv)), 2):
+    allj.append(cos(jv[a], jv[b]))
+aj = np.array(allj)
+check('跨域平均 0.8082', abs(aj.mean() - 0.8082) < 0.001, '实际 %.4f' % aj.mean())
+
+# ---------- 10) 4.2.8 基向量 v2 ----------
+print('=== 10) 4.2.8 基向量 v2 内部相似度 ===')
+sim_v2, sd_v2 = internal_mean_sim(basis2)
+rng_v2 = float(np.max(np.array([cos(basis2[i], basis2[j]) for i in range(8) for j in range(i + 1, 8)])) -
+               np.min(np.array([cos(basis2[i], basis2[j]) for i in range(8) for j in range(i + 1, 8)])))
+print('  v2 平均=%.4f SD=%.4f 范围=%.4f' % (sim_v2, sd_v2, rng_v2))
+check('v2 平均 0.8054', abs(sim_v2 - 0.8054) < 0.001, '实际 %.4f' % sim_v2)
+check('v2 SD 0.0283', abs(sd_v2 - 0.0283) < 0.001, '实际 %.4f' % sd_v2)
+check('v2 范围 0.1182', abs(rng_v2 - 0.1182) < 0.001, '实际 %.4f' % rng_v2)
+# v1 范围（0.0721）
+rng_v1 = float(np.max(np.array([cos(bmap[i+1], bmap[j+1]) for i in range(8) for j in range(i + 1, 8)])) -
+               np.min(np.array([cos(bmap[i+1], bmap[j+1]) for i in range(8) for j in range(i + 1, 8)])))
+print('  v1 范围=%.4f（论文 0.0721）' % rng_v1)
+check('v1 范围 0.0721', abs(rng_v1 - 0.0721) < 0.001, '实际 %.4f' % rng_v1)
+imp = (0.8359 - sim_v2) / 0.8359 * 100
+check('改进量 ↓3.7%', abs(imp - 3.7) < 0.1, '实际 %.1f%%' % imp)
+
 print()
 print('结论:', 'PASS：BGE系列表全部从嵌入文件复算一致' if ok else 'FAIL：存在不一致，见上方 !!')
 sys.exit(0 if ok else 1)
