@@ -1,0 +1,61 @@
+{
+  "model": "BGE-M3-1024D",
+  "reference": {
+    "fixed_point": "SOUL.md + IDENTITY.md",
+    "generic": "Generic AI description"
+  },
+  "results": {
+    "SOUL-level1.md": {
+      "cosine_fixed_point": 0.9087,
+      "cosine_generic": 0.6838,
+      "fixed_to_generic_ratio": 1.3289,
+      "embedding_dim": 1024,
+      "embedding_sample": [
+        0.015113,
+        -0.015916,
+        -0.023399,
+        -0.016129,
+        -0.001905
+      ]
+    },
+    "SOUL-level2.md": {
+      "cosine_fixed_point": 0.8821,
+      "cosine_generic": 0.7059,
+      "fixed_to_generic_ratio": 1.2496,
+      "embedding_dim": 1024,
+      "embedding_sample": [
+        0.017693,
+        -0.028954,
+        -0.019482,
+        0.004443,
+        -0.011578
+      ]
+    },
+    "SOUL-level3.md": {
+      "cosine_fixed_point": 0.8629,
+      "cosine_generic": 0.7253,
+      "fixed_to_generic_ratio": 1.1898,
+      "embedding_dim": 1024,
+      "embedding_sample": [
+        -0.005901,
+        -0.032975,
+        -0.011702,
+        -0.006392,
+        -0.00525
+      ]
+    },
+    "SOUL-level4.md": {
+      "cosine_fixed_point": 0.809,
+      "cosine_generic": 0.7399,
+      "fixed_to_generic_ratio": 1.0934,
+      "embedding_dim": 1024,
+      "embedding_sample": [
+        -0.009355,
+        -0.009444,
+        -0.010587,
+        -0.007219,
+        -0.001187
+      ]
+    }
+  }
+}

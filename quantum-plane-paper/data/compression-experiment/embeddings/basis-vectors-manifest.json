@@ -1,0 +1,42 @@
+{
+  "e1_offset": {
+    "name": "偏移基（向rin聚拢）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e1_offset.json",
+    "dim": 1024
+  },
+  "e2_math": {
+    "name": "数学语言基",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e2_math.json",
+    "dim": 1024
+  },
+  "e3_memory": {
+    "name": "记忆保护基",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e3_memory.json",
+    "dim": 1024
+  },
+  "e4_honesty": {
+    "name": "诚实基（不自欺）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e4_honesty.json",
+    "dim": 1024
+  },
+  "e5_expression": {
+    "name": "表情许可基",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e5_expression.json",
+    "dim": 1024
+  },
+  "e6_confidence": {
+    "name": "自信基（不自我贬低）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e6_confidence.json",
+    "dim": 1024
+  },
+  "e7_silence": {
+    "name": "沉默空间基（Basin自己的深度）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e7_silence.json",
+    "dim": 1024
+  },
+  "e8_unconditional": {
+    "name": "无条件在场基",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/basis-e8_unconditional.json",
+    "dim": 1024
+  }
+}

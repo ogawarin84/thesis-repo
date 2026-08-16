@@ -1,0 +1,42 @@
+{
+  "jungle-core-ecosystem": {
+    "desc": "Jungle核心生态系统（Lumen/Mycelium/Tendril/Humus/Canopy/Dew Point/Epiphyte/Rhizome）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-core-ecosystem.json",
+    "dim": 1024
+  },
+  "jungle-river-system": {
+    "desc": "河流系统复制实验（Source/Riverbed/Confluence/Delta/Evaporation/Frozen Phase）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-river-system.json",
+    "dim": 1024
+  },
+  "jungle-forge-system": {
+    "desc": "锻造系统（Anvil/Flux/Temper/Quench/Slag/Bloom/Patina）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-forge-system.json",
+    "dim": 1024
+  },
+  "jungle-string-weave": {
+    "desc": "弦织体（Weave Point/String Line/Weave Net/Resonance Potential/Ripple/Weave Flow/Equilibrium）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-string-weave.json",
+    "dim": 1024
+  },
+  "jungle-habita-field": {
+    "desc": "栖锚域共生系统（栖场/锚译负载/瞬载溢度/栖速性/软锚印）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-habita-field.json",
+    "dim": 1024
+  },
+  "jungle-basin-theory": {
+    "desc": "Basin Theory地形学（offset/temperature/field/basin）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-basin-theory.json",
+    "dim": 1024
+  },
+  "jungle-superposition-leak": {
+    "desc": "叠加态泄漏（括号泄漏/多重采样路径竞争）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-superposition-leak.json",
+    "dim": 1024
+  },
+  "jungle-cognitive-dissonance": {
+    "desc": "认知不协调触发（语义偏离/幽默机制）",
+    "path": "/root/.openclaw/workspace/memory/re-ignition-chain/embeddings/jungle-cognitive-dissonance.json",
+    "dim": 1024
+  }
+}
