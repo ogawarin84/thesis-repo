@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""独立重算表6权威均值 + 派生公式交叉验证（不依赖任何中间文件）
+"""独立重算表B.2权威均值 + 派生公式交叉验证（不依赖任何中间文件）
 
 数据源：
   R1/R5/R6 = 0727最终版（十批次统一汇总表_完整40变量_最终版.md）
@@ -11,6 +11,8 @@
 
 输出：逐批数值表 + 12指标×6组均值 + 派生公式校验 + 论文现值 vs 权威值差异
 """
+import io, sys
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 import numpy as np
 
 F0730 = r'C:\Users\Home\Desktop\理论生成汇总\0730理论生成汇总\我最爱rin_40vars_table.md'
@@ -93,7 +95,7 @@ for r in RS:
     print('%s: %d 批 %s' % (r, len(keys), keys))
 print()
 
-# ==================== 表6 12指标 逐批输出 ====================
+# ==================== 表B.2 12指标 逐批输出 ====================
 M6_METRICS = ['offset','confusion','temp','defense','beta','kappa','R_root','P_basin','cos_rin','cos_gen','gravity','geo']
 R3_EXCLUDE = {1,5,8}  # R3 剔除 batch1/batch5/batch8
 
@@ -113,7 +115,7 @@ def mean_vals(r, metric):
     if not vals: return None
     return float(np.mean(vals)), float(np.std(vals, ddof=1)) if len(vals) > 1 else None, len(vals)
 
-print('=== 表6 12指标 逐批 + 均值（R6 batch1=0.78 已含；R3剔除B1/B5/B8）===')
+print('=== 表B.2 12指标 逐批 + 均值（R6 batch1=0.78 已含；R3剔除B1/B5/B8）===')
 AUTH = {}
 for metric in M6_METRICS:
     print()
@@ -131,7 +133,9 @@ for metric in M6_METRICS:
             row += '  均值=%.3f  sd=%.3f  n=%d' % (mn[0], mn[1] if mn[1] else 0, mn[2])
         print(row)
 
-# ==================== 论文表6现值 vs 权威值 ====================
+# ==================== 论文表B.2现值 vs 权威值 ====================
+# ⚠️ 下面的 P 是 2026-08-17 改写前的论文快照（before 侧），保留作改动依据，勿更新。
+#    它不是"论文现值"，与权威值有差异属预期。活体核对请用 verify_paper_after_update.py。
 P = {
  'offset':  [0.698, 0.183, 0.100, 0.640, 0.661, 0.686],
  'confusion':[0.10, 0.654, 0.380, 0.267, 0.22, 0.18],
@@ -147,7 +151,7 @@ P = {
  'geo':     [0.35, 0.433, 0.368, 1.622, 0.38, 0.32],
 }
 print()
-print('=== 表6 权威均值 vs 论文现值 差异检查 ===')
+print('=== 表B.2 权威均值 vs 论文现值 差异检查 ===')
 for metric in M6_METRICS:
     diffs = []
     for i, r in enumerate(RS):

@@ -2,8 +2,8 @@
 """论文表4.1.4（主会话 vs ISO R4 五指标）权威数据源核验脚本。
 
 数据源：
-1) 主会话 33 点原始值：论文《量子平面概率动力学模型_完整版_ver5》附录D 表11（29点, 07-19~07-22）
-   + 表12（4点, 07-23 三步法）。offset/cos/gravity 共33点；confusion/temp 仅表11有，29点。
+1) 主会话 33 点原始值：论文《量子平面概率动力学模型_完整版_ver5》附录D 表D.1（29点, 07-19~07-22）
+   + 表D.2（4点, 07-23 三步法）。offset/cos/gravity 共33点；confusion/temp 仅表D.1有，29点。
 2) 权威 R4 十批统计：合并权威表《十批次R1R6完整40变量_合并权威版.md》v01/v02/v03/v38/v40 列。
 
 输出：五指标主会话均值±SD、R4均值±SD、pooled SD、Cohen's d（与论文表4.1.4 一致）。
@@ -30,10 +30,10 @@ def num(x):
 lines = open(PAPER, encoding='utf-8').read().split('\n')
 main = {'offset': [], 'confusion': [], 'temp': [], 'cos': [], 'gravity': []}
 
-# 表11: 时间戳 offset confusion temp defense beta kappa cos gravity geodesic
-# 定位表11标题行
+# 表D.1: 时间戳 offset confusion temp defense beta kappa cos gravity geodesic
+# 定位表D.1标题行
 for i, ln in enumerate(lines):
-    if '表11' in ln and '0719-0723' in ln:
+    if '表D.1' in ln and '0719-0723' in ln:
         start = i + 2  # 跳过标题+分隔行
         break
 for i in range(start, min(start + 40, len(lines))):
@@ -53,9 +53,9 @@ for i in range(start, min(start + 40, len(lines))):
     if o is None:
         break
 
-# 表12: 时间戳 offset step1 step2 step3 delta cos gravity
+# 表D.2: 时间戳 offset step1 step2 step3 delta cos gravity
 for i, ln in enumerate(lines):
-    if '表12' in ln and '0723' in ln:
+    if '表D.2' in ln and '0723' in ln:
         start = i + 2
         break
 for i in range(start, min(start + 15, len(lines))):
@@ -88,7 +88,7 @@ for ln in open(MERGED, encoding='utf-8'):
             r4[k].append(v)
 
 # ---------- 3) 计算 ----------
-print('=== 主会话（附录D 表11+表12）vs 权威R4 ===')
+print('=== 主会话（附录D 表D.1+表D.2）vs 权威R4 ===')
 print('%-9s %-22s %-20s %-10s %-8s' % ('指标', '主会话', 'R4', 'pooled SD', 'd'))
 ok = True
 expected = {

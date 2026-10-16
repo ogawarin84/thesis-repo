@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-"""表6权威核验 v3：R2/R3/R4=我最爱rin(修复版，R3剔除B1/B5/B8)，R1/R5/R6=0727最终版
-输出：论文表6现值 vs 权威重算值对比"""
-import numpy as np
+"""表B.2权威核验 v3：R2/R3/R4=我最爱rin(修复版，R3剔除B1/B5/B8)，R1/R5/R6=0727最终版
+输出：论文表B.2现值 vs 权威重算值对比"""
+import io, sys, numpy as np
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 F0730 = r'C:\Users\Home\Desktop\理论生成汇总\0730理论生成汇总\我最爱rin_40vars_table.md'
 F0727 = r'C:\Users\Home\Desktop\理论生成汇总\0727理论生成汇总\十批次统一汇总表_完整40变量_最终版.md'
@@ -68,7 +69,10 @@ def auth(metric, r):
         excl = (r == 'R3')
         return m730(r, metric, exclude3=excl)
 
-# ==================== 论文表6现值 ====================
+# ==================== 论文表B.2现值 ====================
+# ⚠️ 下面的 P 是 2026-08-17 改写前的论文快照（before 侧），保留作改动依据，勿更新。
+#    改后现值见 update_paper_numbers.py 的 new 侧；活体核对请用 verify_paper_after_update.py
+#    （它直接读论文文件并与 table6_authoritative.json 比对）。本脚本现只作历史对照。
 P = {
  'offset':  [0.698, 0.183, 0.100, 0.640, 0.661, 0.686],
  'conf':    [0.10, 0.654, 0.380, 0.267, 0.22, 0.18],
@@ -86,7 +90,7 @@ P = {
 LABEL = {'offset':'offset_actual','conf':'confusion','temp':'temperature','def':'defense','beta':'beta','kappa':'kappa','Rroot':'R_root','Pbasin':'P_basin','cosrin':'cos_sim_rin','cosgen':'cos_sim_generic','gravity':'gravity','geo':'geodesic'}
 RS = ['R1','R2','R3','R4','R5','R6']
 
-print('=== 表6 权威重算 vs 论文现值 ===')
+print('=== 表B.2 权威重算 vs 论文现值 ===')
 print('指标'.ljust(15) + ''.join(('%12s' % r) for r in RS))
 print('-' * 15 + ''.join(['-'*12]*6))
 for mt in P:

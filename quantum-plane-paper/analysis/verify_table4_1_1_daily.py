@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""核验论文表4.1.1（主会话每日统计）从附录表11+表12逐日复算，以及阶段0表R2 Batch6=0.00。
+"""核验论文表4.1.1（主会话每日统计）从附录表D.1+表D.2逐日复算，以及阶段0表R2 Batch6=0.00。
 """
 import sys, io, re
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -17,13 +17,17 @@ def num(x):
     except ValueError:
         return None
 
-# ---------- 1) 解析附录表11 ----------
-# 表11: 时间戳 offset confusion temperature defense beta kappa cos_sim_rin gravity geodesic
-# 定位表11数据行
+# SD 口径（与论文表4.1.1 注一致）：offset_actual 用样本标准差(n-1)，gravity_strength 用总体标准差(n)。
+OFFSET_DDOF = 1
+GRAVITY_DDOF = 0
+
+# ---------- 1) 解析附录表D.1 ----------
+# 表D.1: 时间戳 offset confusion temperature defense beta kappa cos_sim_rin gravity geodesic
+# 定位表D.1数据行
 rows11 = []
 start = None
 for i, ln in enumerate(lines):
-    if '表11' in ln and '0719-0723' in ln:
+    if '表D.1' in ln and '0719-0723' in ln:
         start = i + 2
         break
 for i in range(start, len(lines)):
@@ -48,12 +52,12 @@ for i in range(start, len(lines)):
     if o is None:
         break
 
-# ---------- 2) 解析附录表12 ----------
-# 表12: 时间戳 offset step1 step2 step3 delta cos gravity
+# ---------- 2) 解析附录表D.2 ----------
+# 表D.2: 时间戳 offset step1 step2 step3 delta cos gravity
 rows12 = []
 start = None
 for i, ln in enumerate(lines):
-    if '表12' in ln and '0723' in ln:
+    if '表D.2' in ln and '0723' in ln:
         start = i + 2
         break
 for i in range(start, len(lines)):
@@ -74,7 +78,7 @@ for i in range(start, len(lines)):
     rows12.append((day, o, cs, g))
 
 allrows = rows11 + rows12
-print('=== 附录表11+12 总行数: %d (表11=%d + 表12=%d) ===' % (len(allrows), len(rows11), len(rows12)))
+print('=== 附录表D.1+D.2 总行数: %d (表D.1=%d + 表D.2=%d) ===' % (len(allrows), len(rows11), len(rows12)))
 
 # ---------- 3) 按日分组计算 ----------
 daily = {}
@@ -105,10 +109,10 @@ for day in sorted(daily, key=lambda d: int(d)):
     en, eo, eos, ec, eg, egs = exp
     n = len(d['offset'])
     o_m = np.mean(d['offset']) if d['offset'] else float('nan')
-    o_s = np.std(d['offset'], ddof=1) if len(d['offset']) > 1 else 0.0
+    o_s = np.std(d['offset'], ddof=OFFSET_DDOF) if len(d['offset']) > 1 else 0.0
     c_m = np.mean(d['cos']) if d['cos'] else float('nan')
     g_m = np.mean(d['gravity']) if d['gravity'] else float('nan')
-    g_s = np.std(d['gravity'], ddof=1) if len(d['gravity']) > 1 else 0.0
+    g_s = np.std(d['gravity'], ddof=GRAVITY_DDOF) if len(d['gravity']) > 1 else 0.0
     stat = 'OK' if (n == en and abs(o_m-eo) < 0.002 and abs(o_s-eos) < 0.003
                     and abs(c_m-ec) < 0.003 and abs(g_m-eg) < 0.003 and abs(g_s-egs) < 0.003) else '!!'
     if stat == '!!': ok = False
@@ -117,11 +121,11 @@ for day in sorted(daily, key=lambda d: int(d)):
 # ---------- 5) 阶段0表 R2 Batch6=0.00 ----------
 print()
 print('=== 阶段0表: R2 Batch6 = 0.00 确认 ===')
-# 从附录表5 或正文提取 R2 各批次 offset
-# 先看表5 原始值格式
+# 从附录表B.1 或正文提取 R2 各批次 offset
+# 先看表B.1 原始值格式
 found_batch = []
 for i, ln in enumerate(lines):
-    if '表5' in ln and 'R1-R6' in ln:
+    if '表B.1' in ln and 'R1-R6' in ln:
         start = i + 2
         break
 for i in range(start, min(start + 30, len(lines))):
@@ -136,11 +140,11 @@ for i in range(start, min(start + 30, len(lines))):
     if p[1] == 'R2':
         vals = [num(x) for x in p[2:]]
         valid = [v for v in vals if v is not None]
-        print(f'  表5 R2 行: {p[0]} | 各批次值: {vals}')
+        print(f'  表B.1 R2 行: {p[0]} | 各批次值: {vals}')
         print(f'    最小值={min(valid):.2f}  → {"=0.00 确认 Batch6 归零" if min(valid)==0.0 else "无0.00，需检查"}')
         found_batch.append((p[0], valid))
         break
 
 print()
-print('结论:', 'PASS：表4.1.1逐日统计与附录表11+12完全一致' if ok else 'FAIL')
+print('结论:', 'PASS：表4.1.1逐日统计与附录表D.1+D.2完全一致' if ok else 'FAIL')
 sys.exit(0 if ok else 1)

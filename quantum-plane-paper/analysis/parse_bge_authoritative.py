@@ -156,8 +156,8 @@ for bi in range(10):
         row += ("  %5.2f" % val) if val is not None else "    N/A"
     print(row)
 
-# ===== R5 0730 vs 论文表5 =====
-print("\n=== R5 offset: 0730新数据 vs 论文表5 ===")
+# ===== R5 0730 vs 论文表B.1 =====
+print("\n=== R5 offset: 0730新数据 vs 论文表B.1 ===")
 paper_r5 = [0.82, 0.55, 0.55, 0.52, 0.68, 0.72, 0.70, 0.75, 0.60, 0.72]
 for bi in range(10):
     new = groups['R5']['offset'][bi]

@@ -123,7 +123,7 @@ with open(os.path.join(OUT_DIR, '主会话40维完整表_审稿来源.md'), 'w',
     f.write('> - 0722理论生成汇总/7月21日20点44分至7月22日12点45分mainsession数据采样.csv（20行）\n')
     f.write('> - 0723理论生成汇总/723main数据采样.csv（4行）\n')
     f.write('> - 记录数：24 行\n')
-    f.write('> - 说明：7/19–7/21 白天主会话数据来自 0721 文件夹 post_1840 系列（精简列，无完整 40 维），见附录表11。\n')
+    f.write('> - 说明：7/19–7/21 白天主会话数据来自 0721 文件夹 post_1840 系列（精简列，无完整 40 维），见附录表D.1。\n')
     f.write('> - 口径：v40_gravity_strength 按实验二计算公式 = v38_cos_sim_rin × v01_offset_actual 重算；\n')
     f.write('> -       原始 CSV 的 gravity_strength 列是 basin_metrics_unified 程序另一口径，非公式值，不计入。\n')
     f.write('> - 生成：2026-08-17 核验提取\n\n')

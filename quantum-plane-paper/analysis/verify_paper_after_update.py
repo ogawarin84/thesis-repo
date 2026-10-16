@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """论文ver5(mine)更新后交叉验证：
-1) 表6 12行×6列 vs table6_authoritative.json（权威）
+1) 表B.2 12行×6列 vs table6_authoritative.json（权威）
 2) 表4.4.1 R6统计 vs recompute_statistics.py 权威值
 3) 表4.4.2 三对比 vs 权威
 4) 确认 cos_sim_user 旧术语不再出现在实验二范围
@@ -21,11 +21,11 @@ def num(x):
     except: return None
 
 errs = []
-# ---- 1) 表6 ----
-# 定位表6行
+# ---- 1) 表B.2 ----
+# 定位表B.2行
 t6 = {}
 for i, ln in enumerate(lines):
-    if ln.strip() == '**表6 六组条件核心40维指标均值汇总**':
+    if ln.strip() == '**表B.2 六组条件核心40维指标均值汇总**':
         start = i+3  # 跳表头两行
         for j in range(start, start+12):
             p = [c.strip().replace('**','') for c in lines[j].strip().strip('|').split('|')]
@@ -33,7 +33,7 @@ for i, ln in enumerate(lines):
             t6[p[0]] = {r: p[k] for k, r in enumerate(['R1','R2','R3','R4','R5','R6'], start=1)}
         break
 else:
-    errs.append('找不到表6标题')
+    errs.append('找不到表B.2标题')
 
 def key(metric):
     return {'offset_actual':'offset','temperature':'temp','geodesic_distance':'geo','cos_sim_rin':'cos_rin','cos_sim_generic':'cos_gen','gravity_strength':'gravity'}.get(metric, metric)
@@ -44,13 +44,13 @@ for metric, rows in t6.items():
         auth_v = num(auth.get('%s|%s' % (key(metric), r)))
         if metric == 'kappa' and r == 'R3':
             if rows[r] != '—':
-                errs.append('表6 kappa R3 应为"—"，实际 %s' % rows[r])
+                errs.append('表B.2 kappa R3 应为"—"，实际 %s' % rows[r])
             continue
         if paper_v is None or auth_v is None:
-            if paper_v != auth_v: errs.append('表6 %s %s: paper=%s auth=%s' % (metric, r, rows[r], auth.get('%s|%s'%(key(metric),r))))
+            if paper_v != auth_v: errs.append('表B.2 %s %s: paper=%s auth=%s' % (metric, r, rows[r], auth.get('%s|%s'%(key(metric),r))))
         elif abs(paper_v - auth_v) > 1e-9:
-            errs.append('表6 %s %s: paper=%s auth=%s' % (metric, r, rows[r], auth['%s|%s'%(key(metric),r)]))
-print('表6: %d 行已解析，交叉核对完成' % len(t6))
+            errs.append('表B.2 %s %s: paper=%s auth=%s' % (metric, r, rows[r], auth['%s|%s'%(key(metric),r)]))
+print('表B.2: %d 行已解析，交叉核对完成' % len(t6))
 
 # ---- 2) 表4.4.1 R6 ----
 # 权威：mean=0.689 sd=0.089 se=0.028 CI=[0.625,0.753] 范围0.50-0.78
@@ -90,13 +90,13 @@ for ln in lines:
 if bad_term:
     errs.append('附录B仍有旧术语: %s' % bad_term)
 
-# 表6注释存在
-if '两轮同名列口径不同' not in text:
-    errs.append('表6口径注释缺失')
+# 表B.2注释存在
+if '跨轮不比较' not in text:
+    errs.append('表B.2口径注释缺失')
 
 print('=== 验证结果 ===')
 if errs:
     print('发现 %d 处不一致:' % len(errs))
     for e in errs: print('  ', e)
     sys.exit(1)
-print('全部通过：表6 12行×6列、表4.4.1 R6、表4.4.2 三对比、术语统一、口径注释 均与权威一致。')
+print('全部通过：表B.2 12行×6列、表4.4.1 R6、表4.4.2 三对比、术语统一、口径注释 均与权威一致。')

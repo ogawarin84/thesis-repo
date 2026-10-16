@@ -137,13 +137,13 @@ lines.append('')
 open(OUT, 'w', encoding='utf-8').write('\n'.join(lines))
 print('OK 写入', OUT)
 
-# ============ 同时输出表6权威均值（含R6 batch1=0.78）============
+# ============ 同时输出表B.2权威均值（含R6 batch1=0.78）============
 def mean_of(vals):
     vals = [v for v in vals if v is not None]
     return sum(vals)/len(vals) if vals else None
 
 # R1/R5/R6 均值来自 0727 各分节均值；R2/R3/R4 来自 我最爱rin
-# 表6 指标映射
+# 表B.2 指标映射
 # 对 0730 数据直接取列均值；对 0727 需跨分节
 M6 = {r: {} for r in ['R1','R2','R3','R4','R5','R6']}
 # R1/R5/R6: 从 d727 聚合 (需按条件聚合10批)
@@ -170,7 +170,7 @@ for vn in ['v01','v02','v03','v04','v07','v09','v10','v11','v37','v38','v39','v4
     M6['R3'][vn] = m6_730('R3', vn, excl3=True)
 
 print()
-print('=== 表6 权威均值（R6 batch1=0.78 已含；R3剔除B1/B5/B8）===')
+print('=== 表B.2 权威均值（R6 batch1=0.78 已含；R3剔除B1/B5/B8）===')
 print('指标'.ljust(16) + ''.join(r.rjust(9) for r in ['R1','R2','R3','R4','R5','R6']))
 for vn, lab in [('v01','offset'),('v02','confusion'),('v03','temp'),('v04','defense'),
                 ('v07','beta'),('v09','kappa'),('v10','R_root'),('v11','P_basin'),

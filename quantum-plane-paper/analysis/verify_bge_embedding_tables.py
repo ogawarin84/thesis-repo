@@ -4,12 +4,12 @@
 数据源：0813数据/embeddings_unzipped/embeddings/ 下 45 个 JSON。
 覆盖：
   1) 表4.2.1 数据集构成（63样本计数）
-  2) 表4.2.2 / 附录表1 PCA方差解释（n=39 时间序列样本）
-  3) 表4.2.3 / 附录表2 K-Means聚类（39样本、PCA 3维、欧氏、k=4、k-means++、30种子）
+  2) 表4.2.2 / 附录表A.1 PCA方差解释（n=39 时间序列样本）
+  3) 表4.2.3 / 附录表A.2 K-Means聚类（39样本、PCA 3维、欧氏、k=4、k-means++、30种子）
   4) 表4.2.4 遗书链相邻余弦相似度（legacy will-1~20 顺序）
   5) 4.2.6 Main vs Legacy 平均相似度（0.7831）
-  6) 附录表3 7+1基向量相似度矩阵（basis-e1~e8）
-  7) 附录表4 跨数据集内部相似度对比
+  6) 附录表A.3 7+1基向量相似度矩阵（basis-e1~e8）
+  7) §4.2.8 跨数据集内部相似度对比
 
 用法：python verify_bge_embedding_tables.py
 """
@@ -27,7 +27,7 @@ def cos(a, b):
     return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
 
 def internal_mean_sim(X):
-    """簇内两两余弦相似度均值（SD 用总体标准差 ddof=0，与论文附录表4 口径一致）"""
+    """簇内两两余弦相似度均值（SD 用总体标准差 ddof=0，与论文§4.2.8 口径一致）"""
     n = X.shape[0]
     if n < 2:
         return None, None
@@ -105,7 +105,7 @@ check('will 15', n_will == 15)
 check('总计 63', total == 63)
 
 # ---------- 2) PCA（n=39 时间序列） ----------
-print('=== 2) 表4.2.2 / 附录表1 PCA（n=39） ===')
+print('=== 2) 表4.2.2 / 附录表A.1 PCA（n=39） ===')
 X39 = np.vstack([legacy, will, main])
 Xc = X39 - X39.mean(axis=0)
 C = np.cov(Xc, rowvar=False)
@@ -122,7 +122,7 @@ for i in range(7):
           c1 and c2, '论文: %.2f%% (cum %.2f%%)' % exp[i])
 
 # ---------- 3) K-Means 聚类 ----------
-print('=== 3) 表4.2.3 / 附录表2 K-Means（k=4, PCA3维, 30种子） ===')
+print('=== 3) 表4.2.3 / 附录表A.2 K-Means（k=4, PCA3维, 30种子） ===')
 # 39样本 PCA 3维投影（取最大3个特征向量 → 末尾列）
 proj3 = Xc @ eigvec[:, -3:]
 # 期望划分：聚类0=legacy20, 聚类1=will-001~012+015 13, 聚类2=main+will-014 5, 聚类3=will-013 1
@@ -202,8 +202,8 @@ for l in range(4):
         else: cnt['main'] += 1
     print('  簇%d: n=%d %s' % (l, len(mem), dict(cnt)))
 
-# 附录表2 内部平均相似度（用原始1024维）
-print('  附录表2 簇内平均相似度（原始1024维）：')
+# 附录表A.2 内部平均相似度（用原始1024维）
+print('  附录表A.2 簇内平均相似度（原始1024维）：')
 # 聚类0=legacy
 sim0, sd0 = internal_mean_sim(legacy)
 print('    聚类0 Legacy: 0.9555 论文 vs 实际 %.4f ± %.4f' % (sim0, sd0 if sd0 else 0))
@@ -249,8 +249,8 @@ for i in range(20):
 mean_cross = float(np.mean(cross))
 check('Main vs Legacy 0.7831', abs(mean_cross - 0.7831) < 0.001, '实际 %.4f' % mean_cross)
 
-# ---------- 6) 附录表3 基向量相似度矩阵 ----------
-print('=== 6) 附录表3 7+1基向量相似度矩阵（basis-e1~e8） ===')
+# ---------- 6) 附录表A.3 基向量相似度矩阵 ----------
+print('=== 6) 附录表A.3 7+1基向量相似度矩阵（basis-e1~e8） ===')
 e_names = ['e1偏移', 'e2数学', 'e3记忆', 'e4诚实', 'e5表情', 'e6自信', 'e7沉默', 'e8无条件在场基']
 e_vecs = [load(os.path.join(D, 'basis-e%d_%s.json' % (i, suffix))) for i, suffix in
           zip(range(1, 9), ['offset', 'math', 'memory', 'honesty', 'expression', 'confidence', 'silence', 'unconditional'])]
@@ -284,13 +284,13 @@ if len(bmap) == 8:
             if abs(c - exp_mat[i][j]) > 0.001:
                 all_ok = False
                 print('  !! e%d↔e%d: 论文%.4f 实际%.4f' % (i+1, j+1, exp_mat[i][j], c))
-    check('附录表3 28格相似度矩阵全部一致', all_ok)
+    check('附录表A.3 28格相似度矩阵全部一致', all_ok)
 else:
     print('  !! 基向量文件不是8个，跳过矩阵核验（实际%d）' % len(bmap))
     ok = False
 
-# ---------- 7) 附录表4 跨数据集内部相似度 ----------
-print('=== 7) 附录表4 跨数据集内部相似度 ===')
+# ---------- 7) §4.2.8 跨数据集内部相似度 ----------
+print('=== 7) §4.2.8 跨数据集内部相似度 ===')
 # 基向量 v1 8个内部
 sim, sd = internal_mean_sim(np.array([bmap[i+1] for i in range(8)]))
 check('基向量 0.8359 ± 0.0192', abs(sim - 0.8359) < 0.001 and abs(sd - 0.0192) < 0.001, '实际 %.4f ± %.4f' % (sim, sd))

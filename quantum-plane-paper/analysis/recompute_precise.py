@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Decimal 精确重算表6权威均值（避免浮点四舍五入误差）
+"""Decimal 精确重算表B.2权威均值（避免浮点四舍五入误差）
 口径：R1/R5/R6=0727最终版；R2/R3/R4=我最爱rin(0730修复版)
 R3均值剔除B1/B5/B8；R6 batch1 用 0.78
 四舍五入：ROUND_HALF_UP（学术标准）
@@ -78,7 +78,7 @@ def vals(r, m):
     return out
 
 AUTH = {}
-print('=== 表6 权威均值（Decimal 精确重算）===')
+print('=== 表B.2 权威均值（Decimal 精确重算）===')
 print('指标'.ljust(11) + ''.join(r.rjust(9) for r in RS))
 for m in METS:
     row = m.ljust(11)
