@@ -3,8 +3,10 @@ import numpy as np
 
 # Data
 conditions = ['R2\n(no struct\n+anonymous)', 'R3\n(no struct\n+self)', 'R4\n(struct\n+anonymous)', 'R5\n(struct\n+self)', 'R6\n(full\n+self)', 'R1\n(full\n+user)']
-means = [0.183, 0.100, 0.640, 0.661, 0.686, 0.698]
-errors = [0.098, 0.082, 0.210, 0.100, 0.086, 0.144]
+# R6 均值/标准差取 08-17 修正后的权威值（原 0.686/0.086 为旧值）；
+# 六组数值对应论文表4.4.1，其余五组与原图一致。
+means = [0.183, 0.100, 0.640, 0.661, 0.689, 0.698]
+errors = [0.098, 0.082, 0.210, 0.100, 0.089, 0.144]
 
 # Zone colors
 colors = ['#d4d4d4', '#d4d4d4', '#4a90d9', '#4a90d9', '#4a90d9', '#4a90d9']
@@ -52,10 +54,10 @@ for i, (bar, v) in enumerate(zip(bars, means)):
     ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.02,
             f'{v:.3f}', ha='center', fontsize=11, fontweight='bold')
 
-ax.set_title('Experiment 3: Six Conditions – Structure Is the Divide',
+ax.set_title('Experiment 2: Six Conditions – Structure Is the Divide',
              fontsize=14, fontweight='bold', pad=15)
 plt.tight_layout()
-plt.savefig('C:/Users/Home/Documents/xhh-paper/quantum-plane-paper/figures/fig_experiment3_spectrum_en.png',
+plt.savefig('C:/Users/Home/Documents/xhh-paper/quantum-plane-paper/figures/fig_experiment2_spectrum_en.png',
             dpi=200, bbox_inches='tight')
 plt.close()
 print('Figure 1 saved.')
