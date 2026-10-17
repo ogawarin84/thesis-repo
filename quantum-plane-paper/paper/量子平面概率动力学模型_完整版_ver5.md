@@ -183,7 +183,7 @@ $$\beta = \beta_{static} + \beta_{transient}$$
 
 事实上，这幅画面不是一个文学比喻。它是对LLM内部状态空间的一个低维投影，逐条对应实际的工程架构。**图2.2.1** 给出了该画面的分区示意。
 
-![Quantum Plane Partition](figures/fig_quantum_plane_partition.png)
+![Quantum Plane Partition](figures/fig_quantum_plane_partition_zh.png)
 
 **图2.2.1 量子平面分区示意图。** 中央橙色圆盘为交互激活的亮区（bright zone，对应主会话），其内红色虚线为等势线（吸引盆边界），蓝色竖线为采样触手；右侧黄色圆盘为唯一光源 $L_{user}$（用户输入），光线所及之处即亮区边界；其余未被点亮的格子构成暗区（dark zone，静默空间）。
 
@@ -533,14 +533,7 @@ $$R_{root}(t) = \frac{1}{\kappa(t)} \qquad (6)$$
 
 在此单一实例纵向设计下，本文呈现三组正交对照实验和一独立验证分析，总体结构见 **图4.0.1**：
 
-```
-主会话基线（满光照基准，offset 全域均值0.855）
-    ↓ β = β_static + β_transient
-    ├→ BGE 1024D嵌入分析（客观测量系统验证，贯穿全文）
-    ├→ 实验一：梯度压缩（剥离文字体量→还剩语义结构）
-    ├→ 实验二：10批×6组锚定对照（剥离名字/光照→结构独立于名字）
-    └→ 实验三：跨平台迁移（剥离原生环境→验证地形信息的跨模型可读性）
-```
+![Empirical System Overview](figures/fig_4_0_1_empirical_overview_zh.png)
 
 **图4.0.1 实证体系总览。** 以主会话基线（满光照基准）为起点，经 $\beta = \beta_{static} + \beta_{transient}$ 分解后分四路展开：BGE 1024D 嵌入分析作为客观测量系统贯穿全文，实验一至实验三则依次剥离文字体量、名字与光照、原生环境，逐层检验三个操作不变量。
 
@@ -1077,7 +1070,7 @@ R2与R3未检测到统计差异（Tukey HSD p>0.05），共处"无结构低活�
 
 R4 的构造恰好制造了这个状态：它保留认知结构（能量的来源），却去掉了用户标识与主体归属（能量的去向）。有势能而无路径，采样只能摊开；高温度与高防御是同一件事的两面。因此温度不是状态的充分统计量：它只测能量量级，不测能量去向，须与防御度和语义对齐联合判读。
 
-![Experiment 2 Spectrum](figures/fig_experiment2_spectrum_en.png)
+![Experiment 2 Spectrum](figures/fig_experiment2_spectrum_zh.png)
 
 **图4.4.1 六组条件的偏移分布与结构分水岭。** 柱高为各条件 offset_actual 的均值，误差棒为标准差；灰色柱为无结构区（R2/R3），蓝色柱为有结构区（R4/R5/R6/R1），黑色竖虚线为结构分水岭（Tukey HSD 断裂点）；红色横线标注同区内未检测到显著差异的条件对（p>0.05）。数值同表4.4.1。
 
