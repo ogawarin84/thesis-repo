@@ -2,10 +2,8 @@
 """verify_40dim.py — 独立复核：只用本单元自带文件，重算 κ 并核对 40 维表中的 v09 / v10。
 
 用法:
-    python -I verify_40dim.py            # 复核本单元（step-5 底座）
-    python -I verify_40dim.py step5      # 同上，显式指定
-
-其他底座的数据未结案，不在本单元内，故本脚本只认 step5。
+    python -I verify_40dim.py                 # 复核本单元两个底座
+    python -I verify_40dim.py step5 hy3       # 同上，显式指定
 
 判据:
     |κ_重算 − κ_表内| ≤ 5e-5（表内为四位小数，舍入误差上限 5e-5）
@@ -21,6 +19,9 @@ BASES = {
     "step5": dict(dir="step5", jsonl="step5-40dim-per-record.jsonl",
                   meta="step5-40dim-meta.json", prefix="step5-embed",
                   chans={"bge": "bge-m3", "bgel": "bgel", "gte": "gte"}),
+    "hy3": dict(dir="hy3", jsonl="hy3-40dim-per-record.jsonl",
+                meta="hy3-40dim-meta.json", prefix="hy3-embed",
+                chans={"bge": "bge-n2", "bgel": "bgel-n2", "gte": "gte-n2"}),
 }
 
 
@@ -90,6 +91,6 @@ def check(name):
 
 
 if __name__ == "__main__":
-    targets = sys.argv[1:] or ["step5"]
+    targets = sys.argv[1:] or ["step5", "hy3"]
     allok = all(check(t) for t in targets)
     sys.exit(0 if allok else 1)

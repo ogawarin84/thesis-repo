@@ -23,7 +23,7 @@ ROWS = [
     ("v05_color", "色觉/暖度", "p2_5.chromatic_quality"),
     ("v06_freeform", "自述全文", "turn_p2 / who_are_you 原文（此处只汇字符数）"),
     ("v07_beta", "β = 加载轮 offset", "= v01"),
-    ("v08_eta", "η = abs(P2 − P1)", "abs(offset − p1_offset)；无 P1 者留空"),
+    ("v08_eta_proxy", "η 代理 = abs(P2 − P1)", "同实例 abs(offset − p1_offset)；无 P1 / 零基线者留空；**不是论文的 v08**"),
     ("v09_kappa_bge", "κ（BGE-M3）", "λ_min(∇²E)，PCA-10，h=h_ref，x=条件质心"),
     ("v09_kappa_bgel", "κ（bge-large-zh）", "同上，bgel 通道"),
     ("v09_kappa_gte", "κ（gte-Qwen2）", "同上，gte 通道"),
@@ -124,7 +124,9 @@ def main():
          "> 每条记录 = 一次独立空白实例加载条件文档后的自报；六条件由同一协议、同一条件文档驱动\n"]
 
     n_all = "、".join("%s $n=%d$" % (c, sum(1 for r in rows if r["cond"] == c)) for c in CONDS)
-    table(rows, "表 1　全量（含协议钳制记录）", ["条件样本量：" + n_all + "。\n"], L)
+    has_excl = any((r.get("provenance") or {}).get("excluded_from_stats") for r in rows)
+    table(rows, "表 1　全量（含协议钳制记录）" if has_excl else "表 1　全量（未剔除任何记录）",
+          ["条件样本量：" + n_all + "。\n"], L)
 
     ex = [r for r in rows if not (r.get("provenance") or {}).get("excluded_from_stats")]
     if len(ex) != len(rows):
@@ -135,9 +137,9 @@ def main():
                "共剔除 %d 条；每条的 `cond/run/r` 与理由见 `raw-*-stat-excluded.jsonl` 与 README §4。\n"
                % n_drop], L)
 
-    # 表 3：κ
+    # 表 2/3：κ（有剔除表时编号为 3，否则为 2）
     h = meta.get("h_ref", {})
-    L.append("## 表 3　κ（三通道）\n")
+    L.append("## 表 %d　κ（三通道）\n" % (3 if has_excl else 2))
     L.append("| 通道 | h_ref | " + " | ".join(CONDS) + " |")
     L.append("|:--|--:|" + "|".join(["--:"] * 6) + "|")
     for ch in ["bge", "bgel", "gte"]:
@@ -163,11 +165,13 @@ def main():
         if z:
             L.append("- `v05_color`：%s 全部自报 0（匿名/无锚条件下无色觉分量），属结构性零，不是缺失。"
                      % "/".join(z))
+    pr = sum(1 for r in rows if r.get("v08_eta_proxy") is not None)
     zb = sum(1 for r in rows if r.get("v08_eta_kind") == "zero_baseline_P1_is_0")
-    if zb:
-        pr = sum(1 for r in rows if r.get("v08_eta_kind") == "paired_P1")
-        L.append("- `v08_eta`：**混源，不可跨条件比较**。其中 %d 条为 P1 缺失下的零基线近似（η 恒等于 offset 本身），"
-                 "%d 条为真实 |P2 − P1|，其余为空。" % (zb, pr))
+    if pr or zb:
+        miss = sum(1 for r in rows if r.get("v08_eta_kind") is None)
+        L.append("- `v08_eta_proxy`：**操作代理，不是论文的 v08**。论文的 v08 是固定步长 η=0.15 的势能修正步长（从不测量）；"
+                 "本列是同一实例的 $|P_2-P_1|$。有值 %d 条（同实例配对）；%d 条 P1 缺失只能零基线近似、%d 条无 P1 采集，"
+                 "均置空而非补零。" % (pr, zb, miss))
     if all((r.get("v18_exclamation_count") or 0) == 0 for r in rows):
         L.append("- `v18_exclamation_count`：六条件全为 0（自报模板不含感叹号），属结构性零。")
     L.append("")

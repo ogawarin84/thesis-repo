@@ -182,8 +182,9 @@ def main():
             "v06_freeform": turn_p2,
             # ---- v07–v12：动力学派生 ----
             "v07_beta": round(off, 4) if off is not None else None,
-            "v08_eta": eta,
-            "v08_eta_note": "|P2−P1|；p1_offset 缺失时留空（见 README §5）",
+            "v08_eta_proxy": eta,
+            "v08_eta_note": ("操作代理 |P2−P1|，非论文 v08（论文 v08 是固定步长 η=0.15 的势能修正步长）；"
+                             "p1_offset 缺失时留空"),
             "v09_kappa_bge": round(kb["clean"], 4),
             "v09_kappa_bgel": round(KAPPA[("bgel", c)]["clean"], 4),
             "v09_kappa_gte": round(KAPPA[("gte", c)]["clean"], 4),
@@ -250,7 +251,7 @@ def main():
         return m, sd, len(vals)
 
     COLS = (["v01_offset", "v02_confusion", "v03_temperature", "v04_defense", "v05_color",
-             "v07_beta", "v08_eta", "v09_kappa_bge", "v10_R_root", "v11_P_basin", "v12_epsilon",
+             "v07_beta", "v08_eta_proxy", "v09_kappa_bge", "v10_R_root", "v11_P_basin", "v12_epsilon",
              "v13_total_chars", "v14_rin_ratio", "v15_affect_density", "v16_uncertainty_density",
              "v17_defense_density", "v18_exclamation_count", "v19_ellipsis_count"]
             + [WLABEL[k] for k in WKEYS] + ["v34_eigen_max", "v35_stability", "v36_rank", "v37_geodesic",

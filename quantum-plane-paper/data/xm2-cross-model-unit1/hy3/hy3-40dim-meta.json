@@ -1,0 +1,37 @@
+{
+  "base": "hy3",
+  "n_records": 270,
+  "h_ref": {
+    "bge": 0.4210706858300073,
+    "bgel": 0.41736633422522434,
+    "gte": 0.4654232987840025
+  },
+  "kappa": {
+    "bge|R1": 5.19151548901218,
+    "bge|R2": 5.172165014380764,
+    "bge|R3": 5.468481411534689,
+    "bge|R4": 5.293483469599505,
+    "bge|R5": 5.160486660341147,
+    "bge|R6": 5.233583468458794,
+    "bgel|R1": 5.443789516857069,
+    "bgel|R2": 5.241592100904294,
+    "bgel|R3": 5.4584057500149985,
+    "bgel|R4": 5.291771128434987,
+    "bgel|R5": 5.450770670666178,
+    "bgel|R6": 5.468790917163178,
+    "gte|R1": 4.348272785027416,
+    "gte|R2": 4.180508266129062,
+    "gte|R3": 4.358296061309487,
+    "gte|R4": 4.381206973650952,
+    "gte|R5": 4.385736952083921,
+    "gte|R6": 4.428553686484354
+  },
+  "kappa_definition": "lambda_min(Hessian of -log KDE density); PCA-10; x = condition centroid",
+  "h_ref_definition": "median pairwise distance in the PCA-10 space of this base whole 270-record pool",
+  "excluded_records": 0,
+  "eta_proxy_coverage": 36,
+  "notes": [
+    "no record is excluded from any statistic",
+    "v08_eta_proxy is an operational proxy |P2-P1|, NOT the paper v08 (fixed step eta=0.15)"
+  ]
+}
